@@ -14,8 +14,8 @@ class Build(build_ext):
 
 class install(_install):
     def run(self):
-        subprocess.call(['make', 'clean', '-C', '.'])
-        subprocess.call(['make', '-C', '.'])
+        #subprocess.call(['make', 'clean', '-C', '.'])
+        #subprocess.call(['make', '-C', '.'])
         _install.run(self)
 
         
