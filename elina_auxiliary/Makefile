@@ -21,9 +21,9 @@
 
 include ../Makefile.config
 
-LIBDIR = $(ELINA_PREFIX)/elina_auxiliary
+LIBDIR = $(ELINA_PREFIX)/lib
 
-INCLDIR = $(ELINA_PREFIX)/elina_auxiliary
+INCLDIR = $(ELINA_PREFIX)/include 
 
 INSTALL = install
 INSTALLd = install -d
