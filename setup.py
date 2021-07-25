@@ -17,16 +17,16 @@ class install(_install):
         subprocess.call(['make', 'clean', '-C', '.'])
         subprocess.call(['make', '-C', '.'])
         _install.run(self)
+
         
 setup(
-    name='ELINA_NN_Domains',
-    version='0.0.1',    
+    name='elina_nn_py',
+    version='0.0.2',    
     description='ELINA Python package for neural network certification',
     url='https://github.com/GgnDpSngh/ELINA_NN_Domains',
     author='Gagandeep Singh',
     author_email='ggnds@illinois.edu',
     license='GNU GPL3',
-    packages=['ELINA_NN_Domains'],
     
     classifiers=[
         'Development Status :: 1 - Planning',
@@ -35,11 +35,11 @@ setup(
         'Operating System :: POSIX :: Linux',        
         'Programming Language :: Python :: 3.6',
     ],
-    package_dir={"python_interface": ""},
-    #packages=setuptools.find_packages(where="python_interface"),
+    packages=["elina_auxiliary", "elina_linearize", "elina_zonotope", "zonoml", "fppoly", "elina_nn_py"],
+    package_dir={"elina_auxiliary": "elina_auxiliary", "elina_linearize": "elina_linearize", "elina_zonotope": "elina_zonotope", "zonoml": "zonoml", "fppoly": "fppoly", "elina_nn_py":"elina_nn_py"},
     python_requires=">=3.6",
     cmdclass={'build_ext': Build,},
-    package_data={'': ['libelinaux.so', 'libelinalinearize.so', 'libelinazonotope.so', 'libzonoml.so', 'libfpppoly.so']},
+    package_data={'elina_auxiliary': ['libelinaux.so'], 'elina_linearize': ['libelinalinearize.so'], 'elina_zonotope': ['libzonotope.so'], 'zonoml': ['libzonoml.so'], 'fppoly': ['libfppoly.so'], "elina_nn_py": ["elina_nn_py"]},
     setup_requires = ['setuptools>=18.0', 'Cython'],
     has_ext_modules=lambda: True,
 )
