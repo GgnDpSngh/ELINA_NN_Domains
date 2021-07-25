@@ -19,7 +19,7 @@
 #
 
 
-from elina_auxiliary_imports import *
+from elina_nn_py.elina_auxiliary_imports import *
 from ctypes import util
 import random
 

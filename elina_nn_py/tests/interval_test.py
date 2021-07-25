@@ -19,9 +19,9 @@
 #
 
 
-from elina_auxiliary_imports import *
-from elina_interval import *
-from tests.test_imports import *
+from elina_nn_py.elina_auxiliary_imports import *
+from elina_nn_py.elina_interval import *
+from elina_nn_py.tests.test_imports import *
 
 def test_set_int(inteval1):
 

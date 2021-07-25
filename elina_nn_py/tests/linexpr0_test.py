@@ -19,9 +19,9 @@
 #
 
 
-from elina_auxiliary_imports import *
-from elina_linexpr0 import *
-from tests.test_imports import *
+from elina_nn_py.elina_auxiliary_imports import *
+from elina_nn_py.elina_linexpr0 import *
+from elina_nn_py.tests.test_imports import *
 
 
 def test_set_linexpr_scalar_int(linexpr):

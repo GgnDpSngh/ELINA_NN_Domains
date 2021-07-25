@@ -19,10 +19,10 @@
 #
 
 
-from test_imports import *
-from elina_lincons0 import *
-from elina_scalar import *
-from elina_dimension import *
+from elina_nn_py.test_imports import *
+from elina_nn_py.elina_lincons0 import *
+from elina_nn_py.elina_scalar import *
+from elina_nn_py.elina_dimension import *
 
 
 def generate_random_lincons0_array(dim, nbcons):
