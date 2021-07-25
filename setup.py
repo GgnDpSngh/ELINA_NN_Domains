@@ -6,6 +6,7 @@ from setuptools.command.build_ext import build_ext
 class Build(build_ext):
      """Customized setuptools build command - builds protos on build."""
      def run(self):
+         subprocess.call(["./configure"])
          protoc_command = ["make"]
          if subprocess.call(protoc_command) != 0:
              sys.exit(-1)
@@ -14,10 +15,13 @@ class Build(build_ext):
 
 class install(_install):
     def run(self):
-        protoc_command = ["make"]
-        if subprocess.call(protoc_command) != 0:
-            sys.exit(-1)
+        #subprocess.call(['make', 'install', '-C', '.'])
+        #protoc_command = ["make"]
+        #if subprocess.call(protoc_command) != 0:
+        #    sys.exit(-1)
         _install.run(self)
+
+
 
         
 setup(
@@ -28,7 +32,7 @@ setup(
     author='Gagandeep Singh',
     author_email='ggnds@illinois.edu',
     license='GNU GPL3',
-    
+    install_requires=['gmpy'],
     classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Science/Research/Engineering/Technology',
@@ -37,9 +41,9 @@ setup(
         'Programming Language :: Python :: 3.6',
     ],
     packages=["elina_auxiliary", "elina_linearize", "elina_zonotope", "zonoml", "fppoly", "elina_nn_py"],
-    package_dir={"elina_auxiliary": "elina_auxiliary", "elina_linearize": "elina_linearize", "elina_zonotope": "elina_zonotope", "zonoml": "zonoml", "fppoly": "fppoly", "elina_nn_py":"elina_nn_py"},
+    #package_dir={"elina_auxiliary": "elina_auxiliary", "elina_linearize": "elina_linearize", "elina_zonotope": "elina_zonotope", "zonoml": "zonoml", "fppoly": "fppoly", "elina_nn_py":"elina_nn_py"},
     python_requires=">=3.6",
-    cmdclass={'build_ext': Build},
+    cmdclass={'build_ext': Build, 'install': install},
     package_data={'elina_auxiliary': ['libelinaux.so'], 'elina_linearize': ['libelinalinearize.so'], 'elina_zonotope': ['libzonotope.so'], 'zonoml': ['libzonoml.so'], 'fppoly': ['libfppoly.so'], "elina_nn_py": ["elina_nn_py"]},
     setup_requires = ['setuptools>=18.0', 'Cython'],
     has_ext_modules=lambda: True,
