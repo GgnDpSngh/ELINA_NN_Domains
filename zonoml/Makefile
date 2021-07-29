@@ -46,6 +46,7 @@ all : libzonoml.so elina_test_zonoml
 
 libzonoml.so : $(OBJS) $(zonomlH)
 	$(CC) -shared $(CC_ELINA_DYLIB) $(CFLAGS) $(DFLAGS) $(INCLUDES) -o $(SOINST) $(OBJS) $(LIBS)
+	cp libzonoml.so ../elina_nn_py/libzonoml.so
 
 
 zonoml_internal.o : zonoml_internal.h zonoml_internal.c

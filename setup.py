@@ -15,6 +15,9 @@ class Build(build_ext):
 
 class install(_install):
     def run(self):
+        subprocess.call(["./configure"])
+        #subprocess.call(['make', 'clean'])
+        subprocess.call(['make'])
         #subprocess.call(['make', 'install', '-C', '.'])
         #protoc_command = ["make"]
         #if subprocess.call(protoc_command) != 0:
@@ -40,13 +43,14 @@ setup(
         'Operating System :: POSIX :: Linux',        
         'Programming Language :: Python :: 3.6',
     ],
-    packages=["elina_auxiliary", "elina_linearize", "elina_zonotope", "zonoml", "fppoly", "elina_nn_py"],
-    package_dir={"elina_auxiliary": "elina_auxiliary", "elina_linearize": "elina_linearize", "elina_zonotope": "elina_zonotope", "zonoml": "zonoml", "fppoly": "fppoly", "elina_nn_py":"elina_nn_py"},
+    packages=["elina_nn_py"],
+    package_dir={"elina_nn_py":"elina_nn_py"},
     python_requires=">=3.6",
-    cmdclass={'build_ext': Build, 'install': install},
-    package_data={'elina_auxiliary': ['libelinaux.so'], 'elina_linearize': ['libelinalinearize.so'], 'elina_zonotope': ['libzonotope.so'], 'zonoml': ['libzonoml.so'], 'fppoly': ['libfppoly.so'], "elina_nn_py": ["elina_nn_py"]},
+    cmdclass={'install': install},
+    package_data={'elina_nn_py': ['elina_nn_py/libelinaux.so', 'elina_nn_py/libelinalinearize.so', 'elina_nn_py/libzonotope.so','elina_nn_py/libzonoml.so','elina_nn_py/libfppoly.so']},
     setup_requires = ['setuptools>=18.0', 'Cython'],
     has_ext_modules=lambda: True,
+    #ext_modules=[Extension('elina_auxiliary', ['elina_auxiliary/libelinaux'])]
     #Extension("elina_nn", libraries=["libelinaux.so"]),
 )
 

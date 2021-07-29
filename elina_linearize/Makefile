@@ -70,6 +70,7 @@ elina_linearize_texpr.o : elina_linearize_texpr.h elina_linearize_texpr.c
 
 libelinalinearize.so : $(OBJS) $(ELINALINEARIZEH)
 	$(CC) -shared $(CC_ELINA_DYLIB) $(CFLAGS) $(DFLAGS) $(INCLUDES) -o $(SOINST) $(OBJS) $(LIBS)
+	cp libelinalinearize.so ../elina_nn_py/libelinalinearize.so
 
 install:
 	$(INSTALLd) $(LIBDIR); \
