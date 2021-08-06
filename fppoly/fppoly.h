@@ -27,21 +27,19 @@
 extern "C" {
 #endif
 
-#if defined (HAS_APRON)
-#include "apron_wrapper.h"
-#else
+
 #include "elina_coeff.h"
 #include "elina_dimension.h"
 #include "elina_linexpr0.h"
+#include "elina_abstract0.h"
 #include "elina_manager.h"
-#endif
 
 #include <fenv.h>
 #include <pthread.h>
 #include <unistd.h>
 //#include <sys/sysinfo.h>
-#include "elina_generic.h"
-#include "elina_box_meetjoin.h"
+//#include "elina_generic.h"
+//#include "elina_box_meetjoin.h"
 
 
 
@@ -247,6 +245,10 @@ void update_activation_lower_bound_for_neuron(elina_manager_t *man, elina_abstra
 elina_linexpr0_t *get_output_lexpr_defined_over_previous_layers(elina_manager_t *man, elina_abstract0_t *element, int neuron_no, int prev_layer);
 
 elina_linexpr0_t *get_output_uexpr_defined_over_previous_layers(elina_manager_t *man, elina_abstract0_t *element, int neuron_no, int prev_layer);
+
+void elina_double_interval_mul(double *a_inf, double *a_sup, double b_inf, double b_sup, double c_inf, double c_sup);
+
+void elina_double_interval_div(double *a_inf, double *a_sup, double b_inf, double b_sup, double c_inf, double c_sup);
 
 #ifdef __cplusplus
  }
