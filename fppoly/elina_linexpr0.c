@@ -590,8 +590,7 @@ bool elina_linexpr0_set_list_generic(elina_coeff_t* (*get_pcoeff)(void* expr, bo
   elina_interval_t* interval;
   int num,num1,num2,den,den1,den2;
   double k,k1,k2;
-  MP_RAT *mpq,*mpq1,*mpq2;
-  __mpfr_struct *mpfr,*mpfr1,*mpfr2;
+  
   elina_coefftag_t tag;
 
   while (true){
@@ -616,18 +615,7 @@ bool elina_linexpr0_set_list_generic(elina_coeff_t* (*get_pcoeff)(void* expr, bo
       if (pcoeff==NULL) return true;
       elina_coeff_set_scalar(pcoeff,scalar);
       break;
-    case ELINA_COEFF_S_MPQ:
-      mpq = va_arg(*va,MP_RAT*);
-      pcoeff = get_pcoeff(expr,cst,va);
-      if (pcoeff==NULL) return true;
-      elina_coeff_set_scalar_mpq(pcoeff,mpq);
-      break;
-    case ELINA_COEFF_S_MPFR:
-      mpfr = va_arg(*va,__mpfr_struct*);
-      pcoeff = get_pcoeff(expr,cst,va);
-      if (pcoeff==NULL) return true;
-      elina_coeff_set_scalar_mpfr(pcoeff,mpfr);
-      break;
+    
     case ELINA_COEFF_S_INT:
       num = va_arg(*va,int);
       pcoeff = get_pcoeff(expr,cst,va);
@@ -660,20 +648,7 @@ bool elina_linexpr0_set_list_generic(elina_coeff_t* (*get_pcoeff)(void* expr, bo
       if (pcoeff==NULL) return true;
       elina_coeff_set_interval_scalar(pcoeff,scalar1,scalar2);
       break;
-    case ELINA_COEFF_I_MPQ:
-      mpq1 = va_arg(*va,MP_RAT*);
-      mpq2 = va_arg(*va,MP_RAT*);
-      pcoeff = get_pcoeff(expr,cst,va);
-      if (pcoeff==NULL) return true;
-      elina_coeff_set_interval_mpq(pcoeff,mpq1,mpq2);
-      break;
-    case ELINA_COEFF_I_MPFR:
-      mpfr1 = va_arg(*va,__mpfr_struct*);
-      mpfr2 = va_arg(*va,__mpfr_struct*);
-      pcoeff = get_pcoeff(expr,cst,va);
-      if (pcoeff==NULL) return true;
-      elina_coeff_set_interval_mpfr(pcoeff,mpfr1,mpfr2);
-      break;
+    
     case ELINA_COEFF_I_INT:
       num1 = va_arg(*va,int);
       num2 = va_arg(*va,int);

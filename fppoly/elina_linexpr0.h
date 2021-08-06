@@ -216,29 +216,21 @@ bool elina_linexpr0_set_format(elina_linexpr0_t* expr, char* fmt, ...);
 typedef enum elina_coefftag_t {
   ELINA_COEFF,          /* waiting for a coeff_t* object and a dimension */
   ELINA_COEFF_S,        /* waiting for a scalar_t* object and a dimension */
-  ELINA_COEFF_S_MPQ,    /* waiting for a mpq_t object and a dimension */
-  ELINA_COEFF_S_MPFR,   /* waiting for a mpfr_t object and a dimension */
   ELINA_COEFF_S_INT,    /* waiting for a int object and a dimension */
   ELINA_COEFF_S_FRAC,   /* waiting for 2 int objects and a dimension */
   ELINA_COEFF_S_DOUBLE, /* waiting for a double object and a dimension */
   ELINA_COEFF_I,        /* waiting for a interval_t* object and a dimension */
   ELINA_COEFF_I_SCALAR, /* waiting for 2 scalar_t* objects and a dimension */
-  ELINA_COEFF_I_MPQ,    /* waiting for 2 mpq_t objects and a dimension */
-  ELINA_COEFF_I_MPFR,   /* waiting for 2 mpfr_t objects and a dimension */
   ELINA_COEFF_I_INT,    /* waiting for 2 int objects and a dimension */
   ELINA_COEFF_I_FRAC,   /* waiting for 4 int objects and a dimension */
   ELINA_COEFF_I_DOUBLE, /* waiting for 2 double objects and a dimension */
   ELINA_CST,            /* waiting for a coeff_t* object */
   ELINA_CST_S,          /* waiting for a scalar_t* object */
-  ELINA_CST_S_MPQ,      /* waiting for a mpq_t object */
-  ELINA_CST_S_MPFR,     /* waiting for a mpfr_t object */
   ELINA_CST_S_INT,      /* waiting for a int object */
   ELINA_CST_S_FRAC,     /* waiting for 2 int objects */
   ELINA_CST_S_DOUBLE,   /* waiting for a double object */
   ELINA_CST_I,          /* waiting for a interval_t* object */
   ELINA_CST_I_SCALAR,   /* waiting for 2 scalar_t* objects */
-  ELINA_CST_I_MPQ,      /* waiting for 2 mpq_t objects */
-  ELINA_CST_I_MPFR,     /* waiting for 2 mpfr_t objects */
   ELINA_CST_I_INT,      /* waiting for 2 int objects */
   ELINA_CST_I_FRAC,     /* waiting for 4 int objects */
   ELINA_CST_I_DOUBLE,   /* waiting for 2 double objects */

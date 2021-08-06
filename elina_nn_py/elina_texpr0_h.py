@@ -23,7 +23,7 @@
 # elina_tcons0.c: tree expressions
 # ************************************************************************* #
 
-from elina_nn_py.elina_linexpr0_h import *
+from elina_linexpr0_h import *
 
 # ====================================================================== #
 # Datatypes
