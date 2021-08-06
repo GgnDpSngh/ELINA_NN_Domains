@@ -207,26 +207,7 @@ void elina_coeff_set_scalar(elina_coeff_t* coeff, elina_scalar_t* scalar)
   elina_coeff_reinit(coeff,ELINA_COEFF_SCALAR,scalar->discr); 
   elina_scalar_set(coeff->val.scalar,scalar); 
 }
-void elina_coeff_set_scalar_mpq(elina_coeff_t* coeff, mpq_t mpq)
-{
-  elina_coeff_reinit(coeff,ELINA_COEFF_SCALAR,ELINA_SCALAR_MPQ); 
-  elina_scalar_set_mpq(coeff->val.scalar,mpq); 
-}
-void elina_coeff_set_scalar_mpfr(elina_coeff_t* coeff, mpfr_t mpfr)
-{
-  elina_coeff_reinit(coeff,ELINA_COEFF_SCALAR,ELINA_SCALAR_MPFR); 
-  elina_scalar_set_mpfr(coeff->val.scalar,mpfr); 
-}
-void elina_coeff_set_scalar_int(elina_coeff_t* coeff, long int num)
-{
-  elina_coeff_reinit(coeff,ELINA_COEFF_SCALAR,ELINA_SCALAR_MPQ); 
-  elina_scalar_set_int(coeff->val.scalar,num); 
-}
-void elina_coeff_set_scalar_frac(elina_coeff_t* coeff, long int num, unsigned long int den)
-{
-  elina_coeff_reinit(coeff,ELINA_COEFF_SCALAR,ELINA_SCALAR_MPQ); 
-  elina_scalar_set_frac(coeff->val.scalar,num,den); 
-}
+
 void elina_coeff_set_scalar_double(elina_coeff_t* coeff, double num)
 { 
   elina_coeff_reinit(coeff,ELINA_COEFF_SCALAR,ELINA_SCALAR_DOUBLE); 
@@ -242,28 +223,7 @@ void elina_coeff_set_interval_scalar(elina_coeff_t* coeff, elina_scalar_t* inf, 
   elina_coeff_reinit(coeff,ELINA_COEFF_INTERVAL,ELINA_SCALAR_DOUBLE);
   elina_interval_set_scalar(coeff->val.interval,inf,sup);
 }
-void elina_coeff_set_interval_mpq(elina_coeff_t* coeff, mpq_t inf, mpq_t sup)
-{
-  elina_coeff_reinit(coeff,ELINA_COEFF_INTERVAL,ELINA_SCALAR_MPQ); 
-  elina_interval_set_mpq(coeff->val.interval,inf,sup);
-}
-void elina_coeff_set_interval_mpfr(elina_coeff_t* coeff, mpfr_t inf, mpfr_t sup)
-{
-  elina_coeff_reinit(coeff,ELINA_COEFF_INTERVAL,ELINA_SCALAR_MPFR); 
-  elina_interval_set_mpfr(coeff->val.interval,inf,sup);
-}
-void elina_coeff_set_interval_int(elina_coeff_t* coeff, long int inf, long int sup)
-{
-  elina_coeff_reinit(coeff,ELINA_COEFF_INTERVAL,ELINA_SCALAR_MPQ); 
-  elina_interval_set_int(coeff->val.interval,inf,sup); 
-}
-void elina_coeff_set_interval_frac(elina_coeff_t* coeff,
-				long int numinf, unsigned long int deninf, 
-				long int numsup, unsigned long int densup)
-{
-  elina_coeff_reinit(coeff,ELINA_COEFF_INTERVAL,ELINA_SCALAR_MPQ); 
-  elina_interval_set_frac(coeff->val.interval,numinf,deninf,numsup,densup); 
-}
+
 void elina_coeff_set_interval_double(elina_coeff_t* coeff, double inf, double sup)
 {
   elina_coeff_reinit(coeff,ELINA_COEFF_INTERVAL,ELINA_SCALAR_DOUBLE); 

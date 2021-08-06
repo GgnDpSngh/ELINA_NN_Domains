@@ -81,36 +81,27 @@ void elina_coeff_swap(elina_coeff_t* a, elina_coeff_t* b);
 void elina_coeff_set(elina_coeff_t* a, elina_coeff_t* b);
   /* Assignment */
 void elina_coeff_set_scalar(elina_coeff_t* coeff, elina_scalar_t* scalar);
-void elina_coeff_set_scalar_mpq(elina_coeff_t* coeff, mpq_t mpq);
 void elina_coeff_set_scalar_int(elina_coeff_t* coeff, long int num);
 void elina_coeff_set_scalar_frac(elina_coeff_t* coeff, long int num, unsigned long int den);
 void elina_coeff_set_scalar_double(elina_coeff_t* coeff, double num);
-void elina_coeff_set_scalar_mpfr(elina_coeff_t* coeff, mpfr_t mpfr);
   /* Assign a coefficient of type SCALAR, with resp.
      - a coeff
-     - a rational of type mpq_t, converted to type MPQ
-     - an integer, converted to type MPQ
-     - a rational, converted to type MPQ
+     
      - a double, converted to type DOUBLE
-     - a MPFR, converted to type MPFR
   */
 void elina_coeff_set_interval(elina_coeff_t* coeff, elina_interval_t* itv);
 void elina_coeff_set_interval_scalar(elina_coeff_t* coeff, elina_scalar_t* inf, elina_scalar_t* sup);
-void elina_coeff_set_interval_mpq(elina_coeff_t* coeff, mpq_t inf, mpq_t sup);
+
 void elina_coeff_set_interval_int(elina_coeff_t* coeff, long int inf, long int sup);
 void elina_coeff_set_interval_frac(elina_coeff_t* coeff,
                                   long int numinf, unsigned long int deninf,
                                   long int numsup, unsigned long int densup);
 void elina_coeff_set_interval_double(elina_coeff_t* coeff, double inf, double sup);
 void elina_coeff_set_interval_top(elina_coeff_t* coeff);
-void elina_coeff_set_interval_mpfr(elina_coeff_t* coeff, mpfr_t inf, mpfr_t sup);
+
   /* Assign a coefficient of type INTERVAL, with resp.
      - an interval of coeff
-     - an interval of rationals of type MPQ
-     - an interval of integers, converted to type MPQ
-     - an interval of rationals, converted to type MPQ
      - an interval of double, converted to type DOUBLE
-     - an interval of MPFR, converted to type MPFR
      - a top interval (type not precised).
   */
 
