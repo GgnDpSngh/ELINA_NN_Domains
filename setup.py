@@ -27,18 +27,12 @@ class install(_install):
 
 
 
-elinaux = Extension('libelinaux',
-                     sources=['elina_auxiliary/coeff_test.c', 'elina_auxiliary/elina_coeff.c','elina_auxiliary/elina_interval.c','elina_auxiliary/elina_linexpr0.c','elina_auxiliary/elina_scalar.c',  'elina_auxiliary/elina_texpr0.c', 'elina_auxiliary/elina_abstract0.c', 'elina_auxiliary/elina_dimension.c', 'elina_auxiliary/elina_lincons0.c', 'elina_auxiliary/elina_manager.c', 'elina_auxiliary/elina_tcons0.c'],
-                    libraries = ['elina_auxiliary/elinaux'],
-                    extra_compile_args=["-Wcast-qual", "-Wswitch", "-Wall", "-Wextra", "-Wundef", "-Wcast-align", "-Wno-unused", "-U__STRICT_ANSI__", "-fPIC", "-O3", "-DNDEBUG", "-Werror-implicit-function-declaration", "-Wbad-function-cast", "-Wstrict-prototypes", "-Wno-strict-overflow", "-std=c99", "-D_GNU_SOURCE", "-pthread", "-fno-tree-vectorize", "-m64", "-march=native", "-ffp-contract=off"],)
-
 
 fppoly = Extension('libfppoly',
-                     include_dirs = ['elina_auxiliary'],
+                     
                      extra_compile_args=["-Wcast-qual", "-Wswitch", "-Wall", "-Wextra", "-Wundef", "-Wcast-align", "-Wno-unused", "-U__STRICT_ANSI__", "-fPIC", "-O3", "-DNDEBUG", "-Werror-implicit-function-declaration", "-Wbad-function-cast", "-Wstrict-prototypes", "-Wno-strict-overflow", "-std=c99", "-D_GNU_SOURCE", "-pthread", "-fno-tree-vectorize", "-m64", "-march=native", "-ffp-contract=off"],
-                     sources=['fppoly/backsubstitute.c', 'fppoly/clip_approx.c', 'fppoly/expr.c', 'fppoly/leakyrelu_approx.c', 'fppoly/lstm_approx.c', 'fppoly/pool_approx.c', 'fppoly/round_approx.c' ,'fppoly/sign_approx.c', 'fppoly/batch_normalization.c', 'fppoly/compute_bounds.c', 'fppoly/fppoly.c', 'fppoly/log_approx.c', 'fppoly/parabola_approx.c', 'fppoly/relu_approx.c',  'fppoly/s_curve_approx.c'],
-                    libraries = ['fppoly'],
-                    extra_link_args=["-L../elina_auxiliary"])
+                     sources=['fppoly/backsubstitute.c', 'fppoly/clip_approx.c', 'fppoly/expr.c', 'fppoly/leakyrelu_approx.c', 'fppoly/lstm_approx.c', 'fppoly/pool_approx.c', 'fppoly/round_approx.c' ,'fppoly/sign_approx.c', 'fppoly/batch_normalization.c', 'fppoly/compute_bounds.c', 'fppoly/fppoly.c', 'fppoly/log_approx.c', 'fppoly/parabola_approx.c', 'fppoly/relu_approx.c',  'fppoly/s_curve_approx.c','fppoly/elina_coeff.c','fppoly/elina_interval.c','fppoly/elina_linexpr0.c','fppoly/elina_scalar.c',  'fppoly/elina_texpr0.c', 'fppoly/elina_abstract0.c', 'fppoly/elina_dimension.c', 'fppoly/elina_lincons0.c', 'fppoly/elina_manager.c', 'fppoly/elina_tcons0.c'],
+                    libraries = ['fppoly'],)
         
 setup(
     name='elina_nn_py',
@@ -63,7 +57,7 @@ setup(
     #package_data={'elina_nn_py': ['libelinaux.so', 'libelinalinearize.so', 'libzonotope.so','libzonoml.so','libfppoly.so']},
     setup_requires = ['setuptools>=18.0'],
     #has_ext_modules=lambda: True,
-    ext_modules=[ elinaux, fppoly]#[Extension('elina_auxiliary', ['elina_auxiliary/libelinaux'])]
+    ext_modules=[fppoly]#[Extension('elina_auxiliary', ['elina_auxiliary/libelinaux'])]
     #Extension("elina_nn", libraries=["libelinaux.so"]),
 )
 
