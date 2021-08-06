@@ -76,7 +76,7 @@ elina_tcons0.o : elina_tcons0.h elina_tcons0.c
 
 libelinaux.so : $(OBJS) $(ELINAAUXH)
 	$(CC) -shared $(CC_ELINA_DYLIB) $(CFLAGS) $(DFLAGS) $(INCLUDES) -o $(SOINST) $(OBJS) $(LIBS)
-	cp libelinaux.so ../elina_nn_py/libelinaux.so
+	
 
 install:
 	$(INSTALLd) $(LIBDIR); \

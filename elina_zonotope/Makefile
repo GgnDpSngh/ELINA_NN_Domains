@@ -46,7 +46,7 @@ all : libzonotope.so
 
 libzonotope.so : $(OBJS) $(ZONOTOPEH)
 	$(CC) -shared $(CC_ELINA_DYLIB) $(CFLAGS) $(DFLAGS) $(INCLUDES) -o $(SOINST) $(OBJS) $(LIBS)
-	cp libzonotope.so ../elina_nn_py/libzonotope.so
+	
 
 elina_box_internal.o : elina_box_internal.h elina_box_internal.c
 	$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) -o elina_box_internal.o elina_box_internal.c $(LIBS)

@@ -30,13 +30,10 @@ INSTALLd = install -d
 
 OBJS = elina_generic.o elina_scalar_arith.o elina_interval_arith.o  elina_coeff_arith.o elina_linexpr0_arith.o elina_linearize.o elina_linearize_texpr.o
 
-ifeq ($(IS_APRON),)
+
 INCLUDES = $(MPFR_INCLUDE_FLAG) $(GMP_INCLUDE_FLAG) -I../elina_auxiliary
-LIBS = $(MPFR_LIB_FLAG) -lmpfr $(GMP_LIB_FLAG) -lgmp -lm  -L../elina_auxiliary -lelinaux
-else
-INCLUDES = $(MPFR_INCLUDE_FLAG) $(GMP_INCLUDE_FLAG) -I$(APRON_PREFIX)/include -I../apron_interface
-LIBS = $(MPFR_LIB_FLAG) -lmpfr $(GMP_LIB_FLAG) -lgmp -lm -L$(APRON_PREFIX)/lib -lapron
-endif
+LIBS = $(MPFR_LIB_FLAG) -lmpfr $(GMP_LIB_FLAG) -lgmp -lm  -L../elina_auxiliary -lelinaux.cpython-37m-x86_64-linux-gnu
+
 
 INSTALL = install
 INSTALLd = install -d
@@ -70,7 +67,7 @@ elina_linearize_texpr.o : elina_linearize_texpr.h elina_linearize_texpr.c
 
 libelinalinearize.so : $(OBJS) $(ELINALINEARIZEH)
 	$(CC) -shared $(CC_ELINA_DYLIB) $(CFLAGS) $(DFLAGS) $(INCLUDES) -o $(SOINST) $(OBJS) $(LIBS)
-	cp libelinalinearize.so ../elina_nn_py/libelinalinearize.so
+	
 
 install:
 	$(INSTALLd) $(LIBDIR); \

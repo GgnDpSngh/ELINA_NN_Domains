@@ -25,7 +25,7 @@ import os
 import ctypes
 
 # elina_auxiliary_api = CDLL("libelinaux.so")
-elina_auxiliary_api = ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../elina_auxiliary/libelinaux.so"))
+elina_auxiliary_api = ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../libelinaux.cpython-37m-x86_64-linux-gnu.so"))
 
 
 class CtypesEnum(IntEnum):

@@ -25,6 +25,8 @@ import ctypes
 import os
 
 # zonoml_api = CDLL("libzonoml.so")
-
-
-zonoml_api = ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../zonoml/libzonoml.so"))
+ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../gmpy.cpython-37m-x86_64-linux-gnu.so"))
+ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../libelinaux.cpython-37m-x86_64-linux-gnu.so"))
+ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../libelinalinearize.cpython-37m-x86_64-linux-gnu.so"))
+ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../libzonotope.cpython-37m-x86_64-linux-gnu.so"))
+zonoml_api = ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../libzonoml.cpython-37m-x86_64-linux-gnu.so"))

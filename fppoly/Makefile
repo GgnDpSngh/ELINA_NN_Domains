@@ -31,7 +31,7 @@ INSTALLd = install -d
 
 OBJS = fppoly.o backsubstitute.o compute_bounds.o expr.o relu_approx.o leakyrelu_approx.o round_approx.o clip_approx.o batch_normalization.o sign_approx.o s_curve_approx.o parabola_approx.o log_approx.o pool_approx.o lstm_approx.o
 
-LIBS = -L../elina_auxiliary -lelinaux -L../elina_linearize -lelinalinearize -L../elina_zonotope -lzonotope $(MPFR_LIB_FLAG) -lmpfr $(GMP_LIB_FLAG) -lgmp -lm -lpthread 
+LIBS = -L../elina_auxiliary -lelinaux.cpython-37m-x86_64-linux-gnu -L../elina_linearize -lelinalinearize.cpython-37m-x86_64-linux-gnu -L../elina_zonotope -lzonotope.cpython-37m-x86_64-linux-gnu $(MPFR_LIB_FLAG) -lmpfr $(GMP_LIB_FLAG) -lgmp -lm -lpthread 
 INCLUDES = -I../elina_auxiliary -I../elina_linearize -I../elina_zonotope $(MPFR_INCLUDE_FLAG) $(GMP_INCLUDE_FLAG)
 
 
@@ -47,7 +47,6 @@ all : libfppoly.so
 
 libfppoly.so : $(OBJS) $(FPPOLYH)
 	$(CC) -shared $(CC_ELINA_DYLIB) $(CFLAGS) $(DFLAGS) $(INCLUDES) -o $(SOINST) $(OBJS) $(LIBS)
-	cp libfppoly.so ../elina_nn_py/libfppoly.so
 
 fppoly.o : fppoly.h fppoly.c
 	$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) -o fppoly.o fppoly.c $(LIBS)

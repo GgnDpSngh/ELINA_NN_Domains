@@ -31,7 +31,7 @@ INSTALLd = install -d
 
 OBJS = zonoml_internal.o zonoml_fun.o zonoml_reduced_product.o
 
-LIBS = -L../elina_auxiliary -lelinaux -L../elina_linearize -lelinalinearize  -L../elina_zonotope -lzonotope $(MPFR_LIB_FLAG) -lmpfr $(GMP_LIB_FLAG) -lgmp -lm
+LIBS = -L../elina_auxiliary -lelinaux.cpython-37m-x86_64-linux-gnu -L../elina_linearize -lelinalinearize.cpython-37m-x86_64-linux-gnu  -L../elina_zonotope -lzonotope.cpython-37m-x86_64-linux-gnu $(MPFR_LIB_FLAG) -lmpfr $(GMP_LIB_FLAG) -lgmp -lm
 INCLUDES = -I../ -I../elina_auxiliary -I../elina_linearize -I../elina_zonotope $(MPFR_INCLUDE_FLAG) $(GMP_INCLUDE_FLAG)
 
 
@@ -46,7 +46,7 @@ all : libzonoml.so elina_test_zonoml
 
 libzonoml.so : $(OBJS) $(zonomlH)
 	$(CC) -shared $(CC_ELINA_DYLIB) $(CFLAGS) $(DFLAGS) $(INCLUDES) -o $(SOINST) $(OBJS) $(LIBS)
-	cp libzonoml.so ../elina_nn_py/libzonoml.so
+	
 
 
 zonoml_internal.o : zonoml_internal.h zonoml_internal.c
