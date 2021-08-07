@@ -23,9 +23,9 @@
 # elina_tcons0.h: tree expressions constraints and arrays
 # ************************************************************************* #
 
-from elina_coeff_h import *
-from elina_texpr0_h import *
-from elina_lincons0_h import *
+from elina_nn_py.elina_coeff_h import *
+from elina_nn_py.elina_texpr0_h import *
+from elina_nn_py.elina_lincons0_h import *
 
 
 # ======================================================================

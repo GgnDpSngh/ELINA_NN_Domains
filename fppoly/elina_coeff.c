@@ -336,3 +336,24 @@ void elina_coeff_print(elina_coeff_t* a)
 void elina_coeff_swap(elina_coeff_t* a, elina_coeff_t* b)
 { elina_coeff_t t = *a; *a = *b; *b = t; }
 
+
+//not supported
+void elina_coeff_set_scalar_int(elina_coeff_t* coeff, long int num)
+{
+  abort();
+  //elina_scalar_set_int(coeff->val.scalar,num); 
+}
+
+void elina_coeff_set_interval_int(elina_coeff_t* coeff, long int inf, long int sup){
+	abort();
+}
+
+void elina_coeff_set_scalar_frac(elina_coeff_t* coeff, long int num, unsigned long int den){
+	abort();
+}
+
+void elina_coeff_set_interval_frac(elina_coeff_t* coeff,
+                                  long int numinf, unsigned long int deninf,
+                                  long int numsup, unsigned long int densup){
+  abort();                                
+ }                              

@@ -326,6 +326,12 @@ long elina_scalar_hash(elina_scalar_t* a)
   }
 }
 
+//not supported
+void elina_scalar_set_int(elina_scalar_t* scalar, long int i)
+  { abort(); }
+void elina_scalar_set_frac(elina_scalar_t* scalar, long int i, unsigned long int j)
+{ abort(); }
+
 void elina_scalar_print(elina_scalar_t* a)
 { elina_scalar_fprint(stdout,a); }
 
