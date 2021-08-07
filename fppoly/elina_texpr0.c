@@ -48,22 +48,7 @@ elina_texpr0_t* elina_texpr0_cst_scalar(elina_scalar_t* scalar)
   elina_coeff_set_scalar(&res->val.cst, scalar);
   return res;
 }
-elina_texpr0_t* elina_texpr0_cst_scalar_mpq(mpq_t mpq)
-{
-  elina_texpr0_t* res = (elina_texpr0_t*) malloc(sizeof(elina_texpr0_t));
-  res->discr = ELINA_TEXPR_CST;
-  elina_coeff_init(&res->val.cst, ELINA_COEFF_SCALAR);
-  elina_coeff_set_scalar_mpq(&res->val.cst, mpq);
-  return res;
-}
-elina_texpr0_t* elina_texpr0_cst_scalar_mpfr(mpfr_t mpfr)
-{
-  elina_texpr0_t* res = (elina_texpr0_t*) malloc(sizeof(elina_texpr0_t));
-  res->discr = ELINA_TEXPR_CST;
-  elina_coeff_init(&res->val.cst, ELINA_COEFF_SCALAR);
-  elina_coeff_set_scalar_mpfr(&res->val.cst, mpfr);
-  return res;
-}
+
 elina_texpr0_t* elina_texpr0_cst_scalar_int(long int num)
 {
   elina_texpr0_t* res = (elina_texpr0_t*) malloc(sizeof(elina_texpr0_t));
@@ -104,22 +89,7 @@ elina_texpr0_t* elina_texpr0_cst_interval_scalar(elina_scalar_t* inf, elina_scal
   elina_coeff_set_interval_scalar(&res->val.cst, inf, sup);
   return res;
 }
-elina_texpr0_t* elina_texpr0_cst_interval_mpq(mpq_t inf, mpq_t sup)
-{
-  elina_texpr0_t* res = (elina_texpr0_t*) malloc(sizeof(elina_texpr0_t));
-  res->discr = ELINA_TEXPR_CST;
-  elina_coeff_init(&res->val.cst, ELINA_COEFF_INTERVAL);
-  elina_coeff_set_interval_mpq(&res->val.cst, inf, sup);
-  return res;
-}
-elina_texpr0_t* elina_texpr0_cst_interval_mpfr(mpfr_t inf, mpfr_t sup)
-{
-  elina_texpr0_t* res = (elina_texpr0_t*) malloc(sizeof(elina_texpr0_t));
-  res->discr = ELINA_TEXPR_CST;
-  elina_coeff_init(&res->val.cst, ELINA_COEFF_INTERVAL);
-  elina_coeff_set_interval_mpfr(&res->val.cst, inf, sup);
-  return res;
-}
+
 elina_texpr0_t* elina_texpr0_cst_interval_int(long int inf, long int sup)
 {
   elina_texpr0_t* res = (elina_texpr0_t*) malloc(sizeof(elina_texpr0_t));

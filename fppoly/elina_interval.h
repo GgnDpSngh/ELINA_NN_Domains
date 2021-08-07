@@ -67,18 +67,15 @@ void elina_interval_swap(elina_interval_t* a, elina_interval_t* b);
 void elina_interval_set(elina_interval_t* interval, elina_interval_t* interval2);
   /* Assignment */
 void elina_interval_set_scalar(elina_interval_t* interval, elina_scalar_t* inf, elina_scalar_t* sup);
-void elina_interval_set_mpq(elina_interval_t* interval, mpq_t inf, mpq_t sup);
 void elina_interval_set_int(elina_interval_t* interval, long int inf, long int sup);
 void elina_interval_set_frac(elina_interval_t* interval, long int numinf, unsigned long int deninf, long int numsup, unsigned long int densup);
 void elina_interval_set_double(elina_interval_t* interval, double inf, double sup);
-void elina_interval_set_mpfr(elina_interval_t* interval, mpfr_t inf, mpfr_t sup);
   /* Assignment from resp.
      - two scalars
-     - two rationals of type MPQ
+    
      - two integers, giving [inf,dup]
      - two rationals, giving [numinf/deninf,numsup/densup]
      - two double values
-     - two MPFR floating-point numbers
   */
 void elina_interval_set_top(elina_interval_t* interval);
   /* Assignment to universe interval [-oo,oo],

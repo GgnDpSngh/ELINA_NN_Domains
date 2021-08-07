@@ -77,11 +77,7 @@ void elina_interval_set_scalar(elina_interval_t* interval, elina_scalar_t* inf, 
   elina_scalar_set(interval->inf,inf);
   elina_scalar_set(interval->sup,sup);
 }
-void elina_interval_set_mpq(elina_interval_t* interval, mpq_t inf, mpq_t sup)
-{
-  elina_scalar_set_mpq(interval->inf,inf);
-  elina_scalar_set_mpq(interval->sup,sup);
-}
+
 void elina_interval_set_int(elina_interval_t* interval, long int inf, long int sup)
 {
   elina_scalar_set_int(interval->inf,inf);
@@ -97,11 +93,7 @@ void elina_interval_set_double(elina_interval_t* interval, double inf, double su
   elina_scalar_set_double(interval->inf,inf);
   elina_scalar_set_double(interval->sup,sup);
 }
-void elina_interval_set_mpfr(elina_interval_t* interval, mpfr_t inf, mpfr_t sup)
-{
-  elina_scalar_set_mpfr(interval->inf,inf);
-  elina_scalar_set_mpfr(interval->sup,sup);
-}
+
 void elina_interval_set_top(elina_interval_t* interval)
 {
   elina_scalar_set_infty(interval->inf,-1);
@@ -111,14 +103,11 @@ void elina_interval_set_bottom(elina_interval_t* interval)
 {
   switch (interval->inf->discr) {
   case ELINA_SCALAR_DOUBLE: interval->inf->val.dbl = 1.; break;
-  case ELINA_SCALAR_MPQ:    mpq_set_si(interval->inf->val.mpq,1,1); break;
-  case ELINA_SCALAR_MPFR:   mpfr_set_si(interval->inf->val.mpfr,1,GMP_RNDU); break;
+  
   default:               abort();
   }
   switch (interval->sup->discr) {
   case ELINA_SCALAR_DOUBLE: interval->sup->val.dbl = -1.; break;
-  case ELINA_SCALAR_MPQ:    mpq_set_si(interval->sup->val.mpq,-1,1); break;
-  case ELINA_SCALAR_MPFR:   mpfr_set_si(interval->sup->val.mpfr,-1,GMP_RNDD); break;
   default:               abort();
   }
 }

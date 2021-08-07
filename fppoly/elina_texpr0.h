@@ -79,10 +79,6 @@ typedef enum elina_texpr_rtype_t {
 
 /* Rounding direction */
 typedef enum elina_texpr_rdir_t {
-  ELINA_RDIR_NEAREST = GMP_RNDN, /* Nearest */
-  ELINA_RDIR_ZERO    = GMP_RNDZ, /* Zero (truncation for integers) */
-  ELINA_RDIR_UP      = GMP_RNDU, /* + Infinity */
-  ELINA_RDIR_DOWN    = GMP_RNDD, /* - Infinity */
   ELINA_RDIR_RND,    /* All possible mode, non deterministically */
   ELINA_RDIR_SIZE    /* Not to be used ! */
 } elina_texpr_rdir_t;
@@ -116,15 +112,11 @@ typedef struct elina_texpr0_t {
 
 elina_texpr0_t* elina_texpr0_cst                 (elina_coeff_t* coeff);
 elina_texpr0_t* elina_texpr0_cst_scalar          (elina_scalar_t* scalar);
-elina_texpr0_t* elina_texpr0_cst_scalar_mpq      (mpq_t mpq);
-elina_texpr0_t* elina_texpr0_cst_scalar_mpfr     (mpfr_t mpfr);
 elina_texpr0_t* elina_texpr0_cst_scalar_int      (long int num);
 elina_texpr0_t* elina_texpr0_cst_scalar_frac     (long int num, unsigned long int den);
 elina_texpr0_t* elina_texpr0_cst_scalar_double   (double num);
 elina_texpr0_t* elina_texpr0_cst_interval        (elina_interval_t* itv);
 elina_texpr0_t* elina_texpr0_cst_interval_scalar (elina_scalar_t* inf, elina_scalar_t* sup);
-elina_texpr0_t* elina_texpr0_cst_interval_mpq    (mpq_t inf, mpq_t sup);
-elina_texpr0_t* elina_texpr0_cst_interval_mpfr   (mpfr_t inf, mpfr_t sup);
 elina_texpr0_t* elina_texpr0_cst_interval_int    (long int inf, long int sup);
 elina_texpr0_t* elina_texpr0_cst_interval_frac   (long int numinf, unsigned long int deninf,
 					    long int numsup, unsigned long int densup);

@@ -32,8 +32,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include "gmp.h"
-#include "mpfr.h"
+
 
 #include "elina_config.h"
 
@@ -48,16 +47,13 @@ extern "C" {
 
 typedef enum elina_scalar_discr_t {
   ELINA_SCALAR_DOUBLE, /* double-precision floating-point number */
-  ELINA_SCALAR_MPQ,    /* GMP arbitrary precision rational */
-  ELINA_SCALAR_MPFR,   /* MPFR floating-point number */
 } elina_scalar_discr_t;
 
 typedef struct elina_scalar_t {
   elina_scalar_discr_t discr;
   union {
     double dbl;
-    mpq_ptr mpq; /* +infty coded by 1/0, -infty coded by -1/0 */
-    mpfr_ptr mpfr;
+    
   } val;
 } elina_scalar_t;
 
@@ -96,19 +92,15 @@ void elina_scalar_swap(elina_scalar_t* a, elina_scalar_t* b);
 
 void elina_scalar_set(elina_scalar_t* scalar, elina_scalar_t* scalar2);
   /* Assignment */
-void elina_scalar_set_mpq(elina_scalar_t* scalar, mpq_t mpq);
 void elina_scalar_set_int(elina_scalar_t* scalar, long int i);
 void elina_scalar_set_frac(elina_scalar_t* scalar, long int i, unsigned long int j);
-  /* Change the type of scalar to MPQ and initialize it resp. with
-     - mpq
+  /* Change the type of scalar  and initialize it resp. with
+     
      - integer i
      - rational i/j, assuming j!=0
   */
 void elina_scalar_set_double(elina_scalar_t* scalar, double k);
   /* Change the type of scalar to DOUBLE and initialize it with k. */
-void elina_scalar_set_mpfr(elina_scalar_t* scalar, mpfr_t mpfr);
-  /* Change the type of scalar to MPFR and initialize it with mpfr. 
-     The precision of the scalar is changed to match that of mpfr. */
 void elina_scalar_set_infty(elina_scalar_t* scalar, int sgn);
   /* Assignment to sgn*infty. Keep the type of the scalar.
      If sgn == 0, set to zero. */
@@ -118,13 +110,9 @@ void elina_scalar_set_infty(elina_scalar_t* scalar, int sgn);
 /* ====================================================================== */
 
 elina_scalar_t* elina_scalar_alloc_set(elina_scalar_t* scalar2);
-elina_scalar_t* elina_scalar_alloc_set_mpq(mpq_t mpq);
-  /* Allocate an MPQ scalar and initialize it with mpq */
+
 elina_scalar_t* elina_scalar_alloc_set_double(double k);
   /* Allocate an DOUBLE scalar and initialize it with k. */
-elina_scalar_t* elina_scalar_alloc_set_mpfr(mpfr_t mpfr);
-  /* Allocate an MPFR scalar and initialize it with mpfr. 
-     The precisio of the scalar matches that of mpfr. */
 
 /* ====================================================================== */
 /* Conversions */
@@ -133,18 +121,7 @@ elina_scalar_t* elina_scalar_alloc_set_mpfr(mpfr_t mpfr);
 /* For the two next functions, the returned value is zero if conversion is
    exact, positive if the result is greater, negative if it is lower. */
 
-int elina_mpq_set_scalar(mpq_t mpq, elina_scalar_t* scalar, mp_rnd_t round);
-  /* Assign mpq with the value of scalar,
-     possibly converting from another type.
-     Currently, round is not needed, as the conversion is exact */
-int elina_double_set_scalar(double* k, elina_scalar_t* scalar, mp_rnd_t round);
-  /* Return the value of scalar in DOUBLE type,
-     possibly converting from another type. */
-int elina_mpfr_set_scalar(mpfr_t mpfr, elina_scalar_t* scalar, mp_rnd_t round);
-  /* Return the value of scalar in MPFR type,
-     possibly converting from another type. 
-     The precision of mpfr is NOT changed to match that of scalar, so, 
-     rounding may occur. */
+
 
 /* ====================================================================== */
 /* Tests */
@@ -186,14 +163,6 @@ void elina_scalar_init(elina_scalar_t* scalar, elina_scalar_discr_t d)
 {
   scalar->discr = d;
   switch(d){
-  case ELINA_SCALAR_MPQ:
-    scalar->val.mpq = (mpq_ptr)malloc(sizeof(mpq_t));
-    mpq_init(scalar->val.mpq);
-    break;
-  case ELINA_SCALAR_MPFR:
-    scalar->val.mpfr = (mpfr_ptr)malloc(sizeof(mpfr_t));
-    mpfr_init(scalar->val.mpfr);
-    break;
   case ELINA_SCALAR_DOUBLE:
     scalar->val.dbl = 0.0;
     break;
@@ -203,14 +172,6 @@ static inline
 void elina_scalar_clear(elina_scalar_t* scalar)
 {
   switch(scalar->discr){
-  case ELINA_SCALAR_MPQ:
-    mpq_clear(scalar->val.mpq);
-    free(scalar->val.mpq);
-    break;
-  case ELINA_SCALAR_MPFR:
-    mpfr_clear(scalar->val.mpfr);
-    free(scalar->val.mpfr);
-    break;
   case ELINA_SCALAR_DOUBLE:
     break;
   }
