@@ -3,6 +3,31 @@ from setuptools import setup, Extension
 from distutils.command.install import install as _install
 from setuptools.command.build_ext import build_ext
 
+from distutils.command.install_lib import install_lib as _install_lib
+import re
+import os
+
+def batch_rename(src, dst, src_dir_fd=None, dst_dir_fd=None):
+    '''Same as os.rename, but returns the renaming result.'''
+    os.rename(src, dst,
+              src_dir_fd=src_dir_fd,
+              dst_dir_fd=dst_dir_fd)
+    return dst
+
+class _CommandInstallCythonized(_install_lib):
+    def __init__(self, *args, **kwargs):
+        _install_lib.__init__(self, *args, **kwargs)
+
+    def install(self):
+        # let the distutils' install_lib do the hard work
+        outfiles = _install_lib.install(self)
+        # batch rename the outfiles:
+        # for each file, match string between
+        # second last and last dot and trim it
+        matcher = re.compile('\.([^.]+)\.so$')
+        return [batch_rename(file, re.sub(matcher, '.so', file))
+                for file in outfiles]
+
 class Build(build_ext):
      """Customized setuptools build command - builds protos on build."""
      def run(self):
@@ -54,6 +79,9 @@ setup(
     #package_dir={"elina_nn_py":"elina_nn_py"},
     python_requires=">=3.6",
     #cmdclass={'install': install},
+    cmdclass={
+        'install_lib': _CommandInstallCythonized,
+    },
     #package_data={'elina_nn_py': ['libelinaux.so', 'libelinalinearize.so', 'libzonotope.so','libzonoml.so','libfppoly.so']},
     setup_requires = ['setuptools>=18.0'],
     #has_ext_modules=lambda: True,

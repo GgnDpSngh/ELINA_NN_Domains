@@ -24,7 +24,7 @@ from enum import IntEnum
 import ctypes
 import os
 
-fppoly_api = ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../libfppoly.cpython-37m-x86_64-linux-gnu.so"))
+fppoly_api = ctypes.CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)),"../libfppoly.so"))
 # fppoly_api = CDLL("libfppoly.so")
 
 
