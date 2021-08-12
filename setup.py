@@ -57,7 +57,8 @@ fppoly = Extension('libfppoly',
                      
                      extra_compile_args=["-Wcast-qual", "-Wswitch", "-Wall", "-Wextra", "-Wundef", "-Wcast-align", "-Wno-unused", "-U__STRICT_ANSI__", "-fPIC", "-O3", "-DNDEBUG", "-Werror-implicit-function-declaration", "-Wbad-function-cast", "-Wstrict-prototypes", "-Wno-strict-overflow", "-std=c99", "-D_GNU_SOURCE", "-pthread", "-fno-tree-vectorize", "-m64", "-march=native", "-ffp-contract=off"],
                      sources=['fppoly/backsubstitute.c', 'fppoly/clip_approx.c', 'fppoly/expr.c', 'fppoly/leakyrelu_approx.c', 'fppoly/lstm_approx.c', 'fppoly/pool_approx.c', 'fppoly/round_approx.c' ,'fppoly/sign_approx.c', 'fppoly/batch_normalization.c', 'fppoly/compute_bounds.c', 'fppoly/fppoly.c', 'fppoly/log_approx.c', 'fppoly/parabola_approx.c', 'fppoly/relu_approx.c',  'fppoly/s_curve_approx.c','fppoly/elina_coeff.c','fppoly/elina_interval.c','fppoly/elina_linexpr0.c','fppoly/elina_scalar.c',  'fppoly/elina_texpr0.c', 'fppoly/elina_abstract0.c', 'fppoly/elina_dimension.c', 'fppoly/elina_lincons0.c', 'fppoly/elina_manager.c', 'fppoly/elina_tcons0.c'],
-                    libraries = ['fppoly'],)
+                    #libraries = ['fppoly'],
+                    )
         
 setup(
     name='elina_nn_py',
@@ -67,7 +68,7 @@ setup(
     author='Gagandeep Singh',
     author_email='ggnds@illinois.edu',
     license='GNU GPL3',
-    install_requires=['gmpy'],
+    #install_requires=['gmpy'],
     classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Science/Research/Engineering/Technology',
