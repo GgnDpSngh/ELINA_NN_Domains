@@ -1,8 +1,7 @@
-# ELINA
-ETH Library for Numerical Analyis (ELINA) provides specialized numerical domains for neural network analysis such as DeepZ and DeepPoly (CPU and GPU versions).
+# ELINA NN
+This library provides a pip installable implementation of DeepPoly.
 
 
-For more documentation, refer to http://elina.ethz.ch.
 
 
 Contributors
