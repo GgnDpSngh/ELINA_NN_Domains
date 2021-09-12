@@ -1,7 +1,8 @@
 # ELINA NN
-This library provides a pip installable implementation of DeepPoly.
+This repository provides a pip installable implementation of DeepPoly.
 
-
+# Install
+ 
 
 
 Contributors
